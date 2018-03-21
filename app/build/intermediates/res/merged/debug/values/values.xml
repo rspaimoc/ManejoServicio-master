@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ManejoServicios</string>
+    <string name="c">Cancion</string>
+    <string name="canción">Reproducir Canción </string>
+    <string name="creabro">BroadcastReceiver Creado</string>
     <string name="creaserv">Servicio Creado</string>
+    <string name="detener">Detener</string>
+    <string name="detrep">Detencion reproduccion </string>
+    <string name="finabro">BroadcastReceiver Finalizado</string>
     <string name="finaserv">Servicio Finalizado</string>
     <string name="hello">Hello World, Main!</string>
+    <string name="inciorep">Inicio reproduccion </string>
     <string name="iniserv">Servicio Iniciado</string>
+    <string name="intentreceptor">Intent recibido ElReceptor -  </string>
+    <string name="s">Sonido</string>
+    <string name="sonido">Reproducir Sonido</string>
 </resources>

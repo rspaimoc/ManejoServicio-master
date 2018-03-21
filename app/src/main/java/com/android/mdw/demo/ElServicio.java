@@ -1,7 +1,9 @@
 package com.android.mdw.demo;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.widget.Toast;
@@ -18,21 +20,36 @@ public class ElServicio extends Service {
 	
 	@Override
 	public void onCreate() {
-		Toast.makeText(this, R.string.creaserv, Toast.LENGTH_LONG).show();		
-		player = MediaPlayer.create(this, R.raw.train);
-		player.setLooping(true);
+		Toast.makeText(this, R.string.creaserv, Toast.LENGTH_LONG).show();
 	}
 
 	@Override
 	public void onDestroy() {
 		Toast.makeText(this, R.string.finaserv, Toast.LENGTH_LONG).show();
+		player.stop();
+		player.release();
 	}
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startid) {
-		Toast.makeText(this, R.string.iniserv, Toast.LENGTH_LONG).show();
+
+		AudioManager manager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+		if(manager.isMusicActive()){
+			player.stop();
+			player.release();
+		}
+
+		String msg = intent.getStringExtra("msg");
+		if (msg.equals("Iniciar Sonido")){
+			Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
+			player = MediaPlayer.create(this, R.raw.train);
+		} else {
+			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
+			player = MediaPlayer.create(this, R.raw.bob);
+		}
+		player.setLooping(true);
 		player.start();
-		return startid;		
+		return startid;
 	}	
 
 }

@@ -7,7 +7,10 @@
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="26" />
-
+    <!--
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BOOT_COMPLETED" />
+    -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -25,6 +28,20 @@
         <service
             android:name="com.android.mdw.demo.ElServicio"
             android:enabled="true" />
+
+        <receiver android:name="com.android.mdw.demo.MusicReceiver" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.permission.BOOT_COMPLETED" />
+            </intent-filter>
+            -->
+        </receiver>
+        <receiver android:name="com.android.mdw.demo.EarBudsReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.HEADSET_PLUG" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

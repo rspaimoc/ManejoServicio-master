@@ -4,5 +4,15 @@
     <string name="app_name">ManejoServicios</string>
     <string name="iniserv">Servicio Iniciado</string>
     <string name="creaserv">Servicio Creado</string>
+    <string name="creabro">BroadcastReceiver Creado</string>
     <string name="finaserv">Servicio Finalizado</string>
+    <string name="finabro">BroadcastReceiver Finalizado</string>
+    <string name="sonido">Reproducir Sonido</string>
+    <string name="canción">Reproducir Canción </string>
+    <string name="intentreceptor">Intent recibido ElReceptor -  </string>
+    <string name="inciorep">Inicio reproduccion </string>
+    <string name="detrep">Detencion reproduccion </string>
+    <string name="s">Sonido</string>
+    <string name="c">Cancion</string>
+    <string name="detener">Detener</string>
 </resources>
