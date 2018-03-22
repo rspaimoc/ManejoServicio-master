@@ -11,14 +11,25 @@ import android.widget.Toast;
 
 public class Main extends Activity implements OnClickListener {
 
+  EarBudsReceiver receiver;
+  IntentFilter receiver_filter;
+
+
+
+  @Override public void onResume() {
+    receiver_filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+    registerReceiver(receiver, receiver_filter);
+    super.onResume();
+  }
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    IntentFilter receiver_filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
-    EarBudsReceiver receiver = new EarBudsReceiver();
+    receiver_filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+    receiver = new EarBudsReceiver();
     registerReceiver(receiver, receiver_filter);
 
 

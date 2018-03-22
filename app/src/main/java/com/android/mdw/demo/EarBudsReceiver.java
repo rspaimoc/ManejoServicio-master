@@ -15,12 +15,14 @@ import android.widget.Toast;
  */
 
 public class EarBudsReceiver extends BroadcastReceiver {
+
+
     @Override
     public void onReceive(Context context, Intent intent){
         Intent service = new Intent(context, MusicReceiver.class);
 
         if(intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)){
-            int state = intent.getIntExtra("state", -1);
+            int state = intent.getIntExtra("state", 0);
             switch (state) {
                 case 0:
                     Toast.makeText(context, "Intent recibido El Receptor - EVENTO DEL SISTEMA-OFF", Toast.LENGTH_LONG).show();
