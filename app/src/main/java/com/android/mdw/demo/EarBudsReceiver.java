@@ -34,7 +34,7 @@ public class EarBudsReceiver extends BroadcastReceiver {
                     break;
                 case 1:
                     Toast.makeText(context, "Intent recibido El Receptor - EVENTO DEL SISTEMA-ON", Toast.LENGTH_LONG).show();
-                    service.putExtra("msg", "Iniciar Cancion");
+                    service.putExtra("msg", intent.getStringExtra("msg"));
                     context.startService(service);
                     break;
                 default:

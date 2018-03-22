@@ -58,6 +58,7 @@ public class Main extends Activity implements OnClickListener {
   public void onClick(View src) {
 
     Intent intent = new Intent(this, MusicReceiver.class);
+    Intent getIntent;
     switch (src.getId()) {
       case R.id.btnCancion:
         Toast.makeText(this, "Seleccionado Cancion", Toast.LENGTH_LONG).show();
@@ -86,33 +87,34 @@ public class Main extends Activity implements OnClickListener {
           ActivityCompat.requestPermissions(Main.this,
                   new String[]{Manifest.permission.MEDIA_CONTENT_CONTROL}, 1);
         }
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
           ActivityCompat.requestPermissions(Main.this,
                   new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
           ActivityCompat.requestPermissions(Main.this,
                   new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
 
+        /*  Toast.makeText(this, "Seleccionar Audio", Toast.LENGTH_LONG).show();
+          getIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
+          startActivityForResult(getIntent, PICK_SONG);
+        }*/
+
+
         Toast.makeText(this, "Seleccionar Audio", Toast.LENGTH_LONG).show();
-        Intent getIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
+        getIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(getIntent, PICK_SONG);
 
 
-        /*in = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        getIntent.setType("image/*");
-        in.setType("image/*");
-        chooserIntent = Intent.createChooser(getIntent, "Select Image:");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {in});
-        startActivityForResult(chooserIntent, PICK_IMAGE);*/
-
         break;
       case R.id.repUri:
-        Toast.makeText(this, "Seleccionado Detener", Toast.LENGTH_LONG).show();
-        intent.putExtra("msg", "Detener");
-        //stopService(intent);
-        sendBroadcast(intent);
+        Toast.makeText(this, "Seleccionado Uri", Toast.LENGTH_LONG).show();
+        getIntent = new Intent(this, ElServicio.class);
+        intent.putExtra("msg", "uri");
+        startService(getIntent);
         break;
       default:
         break;
@@ -126,50 +128,13 @@ public class Main extends Activity implements OnClickListener {
       if(requestCode == PICK_SONG){
         Uri uri = data.getData();
         Intent intent = new Intent(this, ElServicio.class);
-        intent.putExtra("msg", "Seleccionar Audio");
-        intent.putExtra("song", uri.toString());
+        //Bundle bundle = new Bundle();
+        //bundle.putString("msg", "Seleccionar Audio");
+        //bundle.putString("song", uri.toString());
+        intent.putExtra("msg", uri.toString());
         startService(intent);
-
-        Toast.makeText(this, uri.toString(), Toast.LENGTH_LONG).show();
       }
     }
-    /*if(resultCode == Activity.RESULT_OK){
-      if(requestCode == PICK_SONG){
-        Uri uri = data.getData();
-        Toast.makeText(this, "Te salio bribon", Toast.LENGTH_LONG).show();
-        /*try {
-          Toast.makeText(this, "Te salio bribon", Toast.LENGTH_LONG).show();
 
-        } catch (IOException e) {
-          e.printStackTrace();
-        }*/
-          /*Bitmap map = MediaStore.Audio.Media.getBitmap();
-          Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-          ImageView imageView = (ImageView) findViewById(R.id.photo);
-          imageView.setVisibility(View.VISIBLE);
-          imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-
-      /*if(requestCode == PICK_CONTACT){
-        Uri uri = data.getData();
-        try {
-          Cursor cursor;
-          cursor = getContentResolver().query(uri, null, null, null, null);
-          cursor.moveToFirst();
-          int  phoneIndex =cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-          String name = cursor.getString(phoneIndex);
-          TextView contactName = findViewById(R.id.contact_name);
-          contactName.setText(name);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-
-      }*/
-  /*  }
-
-  }*/
   }
 }

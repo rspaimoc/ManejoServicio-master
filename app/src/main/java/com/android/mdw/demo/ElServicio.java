@@ -3,11 +3,17 @@ package com.android.mdw.demo;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.widget.Toast;
+
+import java.sql.SQLOutput;
 
 public class ElServicio extends Service {
 
@@ -44,16 +50,19 @@ public class ElServicio extends Service {
 		if (msg.equals("Iniciar Sonido")){
 			Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.train);
-		} else if (msg.equals("Seleccionar Audio")) {
-			//Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
-			//player = MediaPlayer.create(this, R.raw.bob);
-
-			Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
-			Uri myUri = Uri.parse(intent.getStringExtra("song"));
-			player = MediaPlayer.create(this, myUri);
-		} else {
+		} else if (msg.equals("Inciar Cancion")) {
 			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.bob);
+
+			//Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
+			//Uri myUri = Uri.parse(intent.getStringExtra("song"));
+			//player = MediaPlayer.create(this, myUri);
+		} else {
+			//Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
+			//player = MediaPlayer.create(this, R.raw.bob);
+			Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
+			//Uri myUri = Uri.parse(intent.getStringExtra("song"));
+			player = MediaPlayer.create(this, Uri.parse(msg));
 		}
 		player.setLooping(true);
 		player.start();
