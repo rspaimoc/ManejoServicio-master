@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.sql.SQLOutput;
@@ -47,21 +48,18 @@ public class ElServicio extends Service {
 		}
 
 		String msg = intent.getStringExtra("msg");
+
 		if (msg.equals("Iniciar Sonido")){
 			Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.train);
 		} else if (msg.equals("Inciar Cancion")) {
+
 			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.bob);
 
-			//Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
-			//Uri myUri = Uri.parse(intent.getStringExtra("song"));
-			//player = MediaPlayer.create(this, myUri);
 		} else {
-			//Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
-			//player = MediaPlayer.create(this, R.raw.bob);
+
 			Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
-			//Uri myUri = Uri.parse(intent.getStringExtra("song"));
 			player = MediaPlayer.create(this, Uri.parse(msg));
 		}
 		player.setLooping(true);

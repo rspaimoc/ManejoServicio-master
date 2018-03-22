@@ -70,6 +70,14 @@ uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:10:5-81
 	android:name
 		ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:10:22-78
+uses-permission#android.permission.BOOT_COMPLETED
+ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:11:5-73
+	android:name
+		ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:11:22-70
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:12:22-78
 application
 ADDED from /home/radu/AndroidStudioProjects/ManejoServicio-master/app/src/main/AndroidManifest.xml:14:5-33:19
 MERGED from [com.android.support:support-v4:26.1.0] /home/radu/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/5be0963175a272804f2858d1b50c2944/AndroidManifest.xml:25:5-29:19

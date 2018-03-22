@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -61,28 +62,28 @@ public class Main extends Activity implements OnClickListener {
     Intent getIntent;
     switch (src.getId()) {
       case R.id.btnCancion:
+
         Toast.makeText(this, "Seleccionado Cancion", Toast.LENGTH_LONG).show();
         intent.putExtra("msg", "Inciar Cancion");
-        //startService(intent);
         sendBroadcast(intent);
         break;
+
       case R.id.btnSonido:
+
         Toast.makeText(this, "Seleccionado Sonido", Toast.LENGTH_LONG).show();
         intent.putExtra("msg", "Iniciar Sonido");
-        //startService(intent);
         sendBroadcast(intent);
         break;
+
       case R.id.btnFin:
+
         Toast.makeText(this, "Seleccionado Detener", Toast.LENGTH_LONG).show();
         intent.putExtra("msg", "Detener");
-        //stopService(intent);
         sendBroadcast(intent);
         break;
+
       case R.id.repAud:
-        /*Toast.makeText(this, "Seleccionado RepCancion", Toast.LENGTH_LONG).show();
-        intent.putExtra("msg", "Iniciar Cancion Seleccionada");
-        //stopService(intent);
-        sendBroadcast(intent);*/
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.MEDIA_CONTENT_CONTROL) != PackageManager.PERMISSION_GRANTED){
           ActivityCompat.requestPermissions(Main.this,
                   new String[]{Manifest.permission.MEDIA_CONTENT_CONTROL}, 1);
@@ -98,11 +99,6 @@ public class Main extends Activity implements OnClickListener {
                   new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
 
-        /*  Toast.makeText(this, "Seleccionar Audio", Toast.LENGTH_LONG).show();
-          getIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
-          startActivityForResult(getIntent, PICK_SONG);
-        }*/
-
 
         Toast.makeText(this, "Seleccionar Audio", Toast.LENGTH_LONG).show();
         getIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
@@ -113,7 +109,7 @@ public class Main extends Activity implements OnClickListener {
       case R.id.repUri:
         Toast.makeText(this, "Seleccionado Uri", Toast.LENGTH_LONG).show();
         getIntent = new Intent(this, ElServicio.class);
-        intent.putExtra("msg", "uri");
+        getIntent.putExtra("msg", "content://media/external/audio/media/297");
         startService(getIntent);
         break;
       default:
@@ -127,6 +123,7 @@ public class Main extends Activity implements OnClickListener {
     if (resultCode == Activity.RESULT_OK){
       if(requestCode == PICK_SONG){
         Uri uri = data.getData();
+        Log.d("Vergaso", uri.toString());
         Intent intent = new Intent(this, ElServicio.class);
         //Bundle bundle = new Bundle();
         //bundle.putString("msg", "Seleccionar Audio");
