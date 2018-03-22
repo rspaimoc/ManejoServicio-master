@@ -126,7 +126,7 @@ public class Main extends Activity implements OnClickListener {
       if(requestCode == PICK_SONG){
         Uri uri = data.getData();
         Intent intent = new Intent(this, ElServicio.class);
-        intent.putExtra("msg", "Detener");
+        intent.putExtra("msg", "Seleccionar Audio");
         intent.putExtra("song", uri.toString());
         startService(intent);
 

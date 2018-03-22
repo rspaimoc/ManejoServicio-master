@@ -44,13 +44,16 @@ public class ElServicio extends Service {
 		if (msg.equals("Iniciar Sonido")){
 			Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.train);
-		} else if (msg.equals("Iniciar Cancion")) {
-			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
-			player = MediaPlayer.create(this, R.raw.bob);
-		} else {
+		} else if (msg.equals("Seleccionar Audio")) {
+			//Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
+			//player = MediaPlayer.create(this, R.raw.bob);
+
 			Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
 			Uri myUri = Uri.parse(intent.getStringExtra("song"));
 			player = MediaPlayer.create(this, myUri);
+		} else {
+			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
+			player = MediaPlayer.create(this, R.raw.bob);
 		}
 		player.setLooping(true);
 		player.start();
