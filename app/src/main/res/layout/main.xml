@@ -39,6 +39,28 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:text="@string/repuri"
+			android:id="@+id/repUri">
+		</Button>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/repaud"
+			android:id="@+id/repAud">
+		</Button>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:text="@string/detener"
 			android:id="@+id/btnFin">
 		</Button>

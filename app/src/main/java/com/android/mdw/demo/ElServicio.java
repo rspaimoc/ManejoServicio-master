@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.IBinder;
 import android.widget.Toast;
 
@@ -43,9 +44,13 @@ public class ElServicio extends Service {
 		if (msg.equals("Iniciar Sonido")){
 			Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.train);
-		} else {
+		} else if (msg.equals("Iniciar Cancion")) {
 			Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
 			player = MediaPlayer.create(this, R.raw.bob);
+		} else {
+			Toast.makeText(this, "Servicio Cancion Seleccionada iniciado", Toast.LENGTH_LONG).show();
+			Uri myUri = Uri.parse(intent.getStringExtra("song"));
+			player = MediaPlayer.create(this, myUri);
 		}
 		player.setLooping(true);
 		player.start();

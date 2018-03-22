@@ -12,6 +12,8 @@
     <string name="intentreceptor">Intent recibido ElReceptor -  </string>
     <string name="inciorep">Inicio reproduccion </string>
     <string name="detrep">Detencion reproduccion </string>
+    <string name="repuri">Reproducir Uri </string>
+    <string name="repaud">Seleccionar Audio </string>
     <string name="s">Sonido</string>
     <string name="c">Cancion</string>
     <string name="detener">Detener</string>
